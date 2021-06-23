@@ -1,0 +1,57 @@
+openapi: 3.0.3
+info:
+  title: User Management
+  version: 1.0.0
+  description: User Management in University
+paths:
+  /Users:
+    summary: Users
+    description: User Magenemet Path
+    get:
+      summary: Return all Users
+      description: Get Users in lists
+      operationId: GetAllUsers
+      tags:
+        - Users
+      externalDocs:
+        url: 'http://docs.myserver.com/api'
+        description: 'Read More in my link'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        500:
+          description: Error in server
+              
+      
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int32
+          minimum: 1
+          description: Primary key Of User
+        name:
+          type: string
+          minLength: 10
+          maxLength: 250
+          description: Full Name Of Users
+        age:
+          type: integer
+          format: int32
+          minimum: 1
+          description: age of user
+        address:
+          type: string
+
